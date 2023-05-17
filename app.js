@@ -1,27 +1,10 @@
 const path = require("path");
 
 const express = require("express");
-// const { engine } = require("express-handlebars");
 
 const rootDir = require("./util/path");
 
 const app = express();
-
-// Pug template engine
-// app.set("view engine", "pug");
-// app.set("views", "views");
-
-// Handlebars template engine
-// app.engine(
-//   "hbs",
-//   engine({
-//     layoutsDir: "views/layouts",
-//     defaultLayout: "main-layout",
-//     extname: "hbs",
-//   })
-// );
-// app.set("view engine", "hbs");
-// app.set("views", "views");
 
 //  EJS template engine
 app.set("view engine", "ejs");
@@ -47,7 +30,6 @@ app.use("/admin", adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-  // res.status(404).sendFile(path.join(rootDir, "views", "404.html"));
   res.status(404).render("404", { docTitle: "Page not found", path: "" });
 });
 
